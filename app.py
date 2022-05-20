@@ -97,7 +97,6 @@ while True:
             else:
                 print('Please enter a valid option')
                 continue
-            products.remove(delete_products)
             print(products)
             continue
 
@@ -123,29 +122,29 @@ while True:
 
         # Couriers menu option 2 - add couriers
         if couriers_menu == '2':
-            add_couriers = input('Please enter new product name')
+            add_couriers = input('Please enter new courier name')
             couriers.append(add_couriers)
             print(couriers)
             continue
 
         # Couriers menu option 3 - edit couriers
         if couriers_menu == '3':
-            delete_couriers = input('Please enter name of product to edit')
+            delete_couriers = input('Please enter name of courier to edit')
             if delete_couriers in couriers:
-                products.remove(delete_couriers)
+                couriers.remove(delete_couriers)
             else:
                 print('Please enter a valid option')
                 continue
-            add_couriers = input('Please enter the new name of product')
+            add_couriers = input('Please enter the new name of courier')
             couriers.append(add_couriers)       
             print(couriers)
             continue
 
         # Couriers menu option 4 - delete couriers
         if couriers_menu == '4':
-            delete_couriers = input('Please enter name of product to delete')
+            delete_couriers = input('Please enter name of courier to delete')
             if delete_couriers in couriers:
-                products.remove(delete_couriers)
+                couriers.remove(delete_couriers)
             else:
                 print('Please enter a valid option')
                 continue
