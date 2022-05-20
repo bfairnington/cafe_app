@@ -1,5 +1,5 @@
 customer_name,customer_address,customer_phone,courier,status
-John,"Unit 2, 12 Main Street, LONDON, WH1 2ER",0789887334,2,preparing
-Jane,"Unit 3, 57 Left Street, LONDON, E3 2BC",07895839273,5,preparing
-Jeremy,"Unit 7, 39 Right Street, LONDON, SE5 4JK",07573950347,1,preparing
-Janice,"Unit 12, 84 Down Street, LONDON, NW2 9GO",07576910334,4,preparing
+John,"Unit 2, 12 Main Street, LONDON, WH1 2ER",0789887334,Beatrice,preparing
+Jane,"Unit 3, 57 Left Street, LONDON, E3 2BC",07895839273,Eunice,preparing
+Jeremy,"Unit 7, 39 Right Street, LONDON, SE5 4JK",07573950347,Albert,preparing
+Janice,"Unit 12, 84 Down Street, LONDON, NW2 9GO",07576910334,David,preparing

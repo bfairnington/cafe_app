@@ -3,18 +3,20 @@
 import csv
 
 
-## IMPORT LISTS
+## IMPORT DICTIONARIES
 # Import list of products
 products = []
-file = open('products.txt','r')
-for line in file.readlines():
-    products.append(line.strip())
+with open("products.csv",'r') as file:
+    csv_file = csv.DictReader(file)
+    for row in csv_file:
+        products.append(row)
 
 # Import list of couriers
 couriers = []
-file = open('couriers.txt','r')
-for line in file.readlines():
-    couriers.append(line.strip())
+with open("couriers.csv",'r') as file:
+    csv_file = csv.DictReader(file)
+    for row in csv_file:
+        couriers.append(row)
 
 # Import list of orders
 orders = []
@@ -46,14 +48,20 @@ while True:
 
     # Main menu option 0 - exit
     if main_menu == '0':
-        # Update products.txt
-        with open('products.txt', 'w') as file:
-            for count, value in enumerate(products):
-                file.writelines(value + '\n')
-        # Update couriers.txt
-        with open('couriers.txt', 'w') as file:
-            for count, value in enumerate(couriers):
-                file.writelines(value + '\n')
+        # Update products.csv
+        with open('products.csv', mode='w', newline = '') as file:
+            fieldnames = ['products_name', 'products_price']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            for i in range(0,len(products)):
+                writer.writerow(products[i])
+        # Update couriers.csv
+        with open('couriers.csv', mode='w', newline = '') as file:
+            fieldnames = ['couriers_name', 'couriers_phone']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            for i in range(0,len(couriers)):
+                writer.writerow(couriers[i])
         # Update orders.csv
         with open('orders.csv', mode='w', newline = '') as file:
             fieldnames = ['customer_name', 'customer_address', 'customer_phone', 'courier', 'status']
@@ -78,38 +86,56 @@ while True:
         
         # Products menu option 1 - print products list
         if products_menu == '1':
-            print(products)
+            for count, list in enumerate(products, 1):
+                print(count, list)
             continue
 
         # Products menu option 2 - add products
         if products_menu == '2':
-            add_products = input('Please enter new product name')
-            products.append(add_products)
-            print(products)
+            # Input products name
+            products_name = input('Please enter new product name')
+            # Input products name
+            products_price = input('Please enter new product price')
+            add_products = {'products_name': products_name, 'products_price': products_price}
+            products.append(add_products)   
+            for count, list in enumerate(products, 1):
+                print(count, list)
             continue
 
         # Products menu option 3 - edit products
         if products_menu == '3':
-            delete_products = input('Please enter name of product to edit')
-            if delete_products in products:
-                products.remove(delete_products)
+            for count, list in enumerate(products, 1):
+                print(count, list)
+            # Delete products
+            delete_products = input('Please enter the number of product to delete')
+            if 0 < int(delete_products) and int(delete_products) <= len(products):
+                del products[int(delete_products)-1]
             else:
                 print('Please enter a valid option')
                 continue
-            add_products = input('Please enter the new name of product')
-            products.append(add_products)       
-            print(products)
+            # Add products
+            # Input products name
+            products_name = input('Please enter new product name')
+            # Input products name
+            products_price = input('Please enter new product price')
+            add_products = {'products_name': products_name, 'products_price': products_price}
+            products.append(add_products)   
+            for count, list in enumerate(products, 1):
+                print(count, list)
             continue
 
         # Products menu option 4 - delete products
         if products_menu == '4':
-            delete_products = input('Please enter name of product to delete')
-            if delete_products in products:
-                products.remove(delete_products)
+            for count, list in enumerate(products, 1):
+                print(count, list)
+            delete_products = input('Please enter the number of product to delete')
+            if 0 < int(delete_products) and int(delete_products) <= len(products):
+                del products[int(delete_products)-1]
             else:
                 print('Please enter a valid option')
                 continue
-            print(products)
+            for count, list in enumerate(products, 1):
+                print(count, list)
             continue
 
         # Products menu else
@@ -131,40 +157,58 @@ while True:
         
         # Couriers menu option 1 - print couriers list
         if couriers_menu == '1':
-            print(couriers)
+            for count, list in enumerate(couriers, 1):
+                print(count, list)
             continue
 
         # Couriers menu option 2 - add couriers
         if couriers_menu == '2':
-            add_couriers = input('Please enter new courier name')
-            couriers.append(add_couriers)
-            print(couriers)
+            # Input couriers name
+            couriers_name = input('Please enter new courier name')
+            # Input couriers name
+            couriers_phone = input('Please enter new courier number')
+            add_couriers = {'couriers_name': couriers_name, 'couriers_phone': couriers_phone}
+            couriers.append(add_couriers)   
+            for count, list in enumerate(couriers, 1):
+                print(count, list)
             continue
 
         # Couriers menu option 3 - edit couriers
         if couriers_menu == '3':
-            delete_couriers = input('Please enter name of courier to edit')
-            if delete_couriers in couriers:
-                couriers.remove(delete_couriers)
+            for count, list in enumerate(couriers, 1):
+                print(count, list)
+            # Delete couriers
+            delete_couriers = input('Please enter the number of courier to edit')
+            if 0 < int(delete_couriers) and int(delete_couriers) <= len(couriers):
+                del couriers[int(delete_couriers)-1]
             else:
                 print('Please enter a valid option')
                 continue
-            add_couriers = input('Please enter the new name of courier')
-            couriers.append(add_couriers)       
-            print(couriers)
+            # Add couriers
+            # Input couriers name
+            couriers_name = input('Please enter new courier name')
+            # Input couriers name
+            couriers_phone = input('Please enter new courier number')
+            add_couriers = {'couriers_name': couriers_name, 'couriers_phone': couriers_phone}
+            couriers.append(add_couriers)   
+            for count, list in enumerate(couriers, 1):
+                print(count, list)
             continue
 
         # Couriers menu option 4 - delete couriers
         if couriers_menu == '4':
-            delete_couriers = input('Please enter name of courier to delete')
-            if delete_couriers in couriers:
-                couriers.remove(delete_couriers)
+            for count, list in enumerate(couriers, 1):
+                print(count, list)
+            delete_couriers = input('Please enter the number of courier to delete')
+            if 0 < int(delete_couriers) and int(delete_couriers) <= len(couriers):
+                del couriers[int(delete_couriers)-1]
             else:
                 print('Please enter a valid option')
                 continue
-            print(couriers)
+            for count, list in enumerate(couriers, 1):
+                print(count, list)
             continue
-        
+
         # Couriers menu else
         else:
             print('Please enter a valid option')
@@ -213,14 +257,14 @@ while True:
         if orders_menu == '3':
             for count, list in enumerate(orders, 1):
                 print(count, list)
-            # Delete order
+            # Delete orders
             delete_orders = input('Please enter the number of order to edit')
             if 0 < int(delete_orders) and int(delete_orders) <= len(orders):
                 del orders[int(delete_orders)-1]
             else:
                 print('Please enter a valid option')
                 continue
-            # Add order
+            # Add orders
             # Input customer name
             customer_name = input('Please enter customer name')
             # Input customer address
@@ -232,7 +276,7 @@ while True:
                 print(count, list)
             select_courier = input('Please enter a number to select courier')
             select_courier = couriers[int(select_courier)-1]
-            # Set order status
+            # Set orders status
             status = "preparing"
             add_orders = {'customer_name': customer_name, 'customer_address': customer_address, 'customer_phone': customer_phone, 'courier': select_courier, 'status': status}
             orders.append(add_orders)
@@ -264,8 +308,5 @@ while True:
     else:
         print('Please enter a valid option')
         continue
-
-
-
 
 
