@@ -1,6 +1,7 @@
 # readme
 
 Setup a Docker container to run a local MySQL database.
+Ensure the adminer container is running.
 
 app.py uses the following login details as default:
         host="localhost",
