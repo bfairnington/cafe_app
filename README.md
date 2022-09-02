@@ -1,5 +1,8 @@
 # readme
 
+A simple app that runs create, read, update and delete (CRUD) operations on an MySQL database.
+
+
 Setup a Docker container to run a local MySQL database.
 Ensure the adminer container is running.
 
